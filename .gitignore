@@ -1,0 +1,24 @@
+# Závislosti
+node_modules/
+**/node_modules/
+
+# Build výstupy
+frontend/dist/
+frontend/.vite/
+
+# Tajné soubory — NIKDY nepushovat do GitHubu
+backend/.dev.vars
+**/.env
+**/.env.local
+
+# Cloudflare Wrangler dočasné soubory
+.wrangler/
+**/.wrangler/
+
+# OS soubory
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/settings.json
+*.log

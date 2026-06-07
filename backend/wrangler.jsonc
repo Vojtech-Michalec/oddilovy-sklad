@@ -1,0 +1,19 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "sklad-backend",
+  "main": "src/index.ts",
+  "compatibility_date": "2025-06-05",
+  // Proměnné dostupné přes c.env (veřejné - neskladuj hesla sem, ta dej přes wrangler secret)
+  "vars": {
+    // Po nasazení frontendu sem dej jeho URL, např. https://sklad.pages.dev
+    "FRONTEND_URL": "https://b2024michvo.delta-www.cz",
+    "MAIL_FROM": "Sklad oddílu <spravavybaveni@vojtech-michalec.cz>"
+  },
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "oddil-db",
+      "database_id": "b66cafe4-aa5b-495d-abe8-2873c48f51a0"
+    }
+  ]
+}

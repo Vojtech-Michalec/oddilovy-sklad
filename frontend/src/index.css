@@ -1,0 +1,8 @@
+.table td,
+.table th {
+  white-space: nowrap;
+}
+
+.table .badge {
+  font-size: 0.8rem;
+}

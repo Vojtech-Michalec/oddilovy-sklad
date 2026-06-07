@@ -1,0 +1,114 @@
+.notify-stack {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 2000;            
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-width: 380px;
+  width: calc(100% - 40px);
+  pointer-events: none;     
+}
+
+.notify-toast {
+  pointer-events: auto;
+  display: grid;
+  grid-template-columns: 36px 1fr 24px;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 14px 14px 16px;
+  background: #fff;
+  border-left: 4px solid #888;
+  border-radius: 8px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.14);
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  position: relative;
+  overflow: hidden;
+  animation: notify-slide-in 0.25s ease-out;
+}
+
+.notify-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  font-weight: bold;
+  color: #fff;
+}
+
+.notify-body { min-width: 0; }
+
+.notify-title {
+  font-weight: 700;
+  font-size: 14px;
+  margin-bottom: 2px;
+  color: #222;
+}
+
+.notify-message {
+  font-size: 13px;
+  color: #444;
+  line-height: 1.4;
+  word-wrap: break-word;
+}
+
+.notify-close {
+  background: none;
+  border: none;
+  font-size: 20px;
+  line-height: 1;
+  color: #999;
+  cursor: pointer;
+  padding: 0;
+  width: 24px;
+  height: 24px;
+}
+.notify-close:hover { color: #333; }
+
+.notify-progress {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 3px;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.08);
+  transform-origin: left;
+  animation: notify-progress 4s linear forwards;
+}
+
+
+.notify-success { border-left-color: #2c7a3e; }
+.notify-success .notify-icon { background: #2c7a3e; }
+
+.notify-error   { border-left-color: #c0392b; }
+.notify-error   .notify-icon { background: #c0392b; }
+
+.notify-info    { border-left-color: #2772d6; }
+.notify-info    .notify-icon { background: #2772d6; }
+
+.notify-warning { border-left-color: #d4982d; }
+.notify-warning .notify-icon { background: #d4982d; }
+
+
+@keyframes notify-slide-in {
+  from { opacity: 0; transform: translateX(60px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes notify-progress {
+  from { transform: scaleX(1); }
+  to   { transform: scaleX(0); }
+}
+
+@media (max-width: 480px) {
+  .notify-stack {
+    top: 10px;
+    right: 10px;
+    left: 10px;
+    width: auto;
+  }
+}
