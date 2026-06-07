@@ -1,10 +1,9 @@
 # Správa oddílového vybavení (SOV)
 
 Webová aplikace pro správu majetku a výpůjček vybavení skautského oddílu.  
-Školní projekt — Gymnázium Delta, 2024/2025.
+Školní projekt — Delta, 2024/2025.
 
 **Živá aplikace:** https://b2024michvo.delta-www.cz  
-**Backend API:** https://sklad-backend.skladbackend.workers.dev
 
 ---
 
@@ -238,21 +237,4 @@ npm install
 # Vytvoř soubor .env
 echo "VITE_API_URL=http://localhost:8787" > .env
 npm run dev
-```
-
----
-
-## Nasazení
-
-### Backend (Cloudflare Workers)
-```bash
-cd backend
-npm run deploy
-```
-
-### Frontend (Apache hosting)
-```bash
-cd frontend
-npm run build
-# Obsah složky dist/ nahrej na hosting přes FTP
 ```

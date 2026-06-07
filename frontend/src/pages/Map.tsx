@@ -7,7 +7,6 @@ import { useNotify } from '../contexts/NotificationContext';
 import { API } from '../api';
 import 'leaflet/dist/leaflet.css';
 
-// --- OPRAVA IKON V LEAFLETU PRO REACT ---
 import L from 'leaflet';
 import icon from 'leaflet/dist/images/marker-icon.png';
 import iconShadow from 'leaflet/dist/images/marker-shadow.png';
@@ -23,7 +22,6 @@ let DefaultIcon = L.icon({
   shadowSize: [41, 41]
 });
 L.Marker.prototype.options.icon = DefaultIcon;
-// ----------------------------------------
 
 interface EquipmentItem {
   id: number;
@@ -49,16 +47,12 @@ export default function MapLocations() {
   const [locations, setLocations] = useState<Location[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
-
-  // Stavy pro Modal - Přidání skladu
   const [showAddModal, setShowAddModal] = useState(false);
   const [newLocName, setNewLocName] = useState('');
   const [searchQuery, setSearchQuery] = useState('');
   const [searchResults, setSearchResults] = useState<any[]>([]);
   const [isSearching, setIsSearching] = useState(false);
   const [selectedAddress, setSelectedAddress] = useState<{address: string, lat: number, lon: number} | null>(null);
-
-  // --- NOVÉ STAVY PRO MODAL - INVENTURA/ZOBRAZENÍ SKLADU ---
   const [showInventoryModal, setShowInventoryModal] = useState(false);
   const [activeLocation, setActiveLocation] = useState<Location | null>(null);
 
@@ -132,13 +126,11 @@ export default function MapLocations() {
     }
   };
 
-  // Otevření modalu s obsahem skladu
   const openInventoryModal = (loc: Location) => {
     setActiveLocation(loc);
     setShowInventoryModal(true);
   };
 
-  // Pomocná funkce pro barvu odznáčku zaplněnosti
   const getFullnessBadgeColor = (percentage: number) => {
     if (percentage > 60) return 'success';
     if (percentage > 20) return 'warning';
@@ -199,7 +191,6 @@ export default function MapLocations() {
                           </Badge>
                         </div>
                         
-                        {/* --- NOVÉ TLAČÍTKO V POPUPU MAPY --- */}
                         <Button 
                           variant="primary" 
                           size="sm" 
@@ -218,11 +209,11 @@ export default function MapLocations() {
         </Card>
       </Container>
 
-      {/* --- NOVÝ MODAL: DETAIL A INVENTURA POLOŽEK SKLADU --- */}
+      {/* --- MODAL: DETAIL A INVENTURA POLOŽEK SKLADU --- */}
       <Modal show={showInventoryModal} onHide={() => setShowInventoryModal(false)} size="lg" centered>
         <Modal.Header closeButton>
           <Modal.Title>
-            📦 Obsah skladu: <span className="text-primary">{activeLocation?.name}</span>
+             Obsah skladu: <span className="text-primary">{activeLocation?.name}</span>
           </Modal.Title>
         </Modal.Header>
         <Modal.Body className="p-0">
@@ -301,7 +292,7 @@ export default function MapLocations() {
                   ))}
                 </ListGroup>
               )}
-              {selectedAddress && <Alert variant="success" className="py-2 mt-2">✅ Získána přesná poloha</Alert>}
+              {selectedAddress && <Alert variant="success" className="py-2 mt-2">Získána přesná poloha</Alert>}
             </Form.Group>
           </Modal.Body>
           <Modal.Footer>
